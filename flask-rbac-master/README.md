@@ -6,7 +6,7 @@ Basic structure for starting a Flask project with basic role based security.
 Create the database table
 ---
 ```
-CREATE TABLE users (
+CREATE TABLE colbert_users (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     email VARCHAR(100),

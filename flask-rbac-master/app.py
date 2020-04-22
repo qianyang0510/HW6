@@ -8,13 +8,12 @@ from werkzeug.urls import url_parse
 from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 from functools import wraps
 
+import random
 import pymysql
 import secrets
 
 
-conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
-
-# Open database connection
+conn ="mysql+pymysql://root:Ztc1639643261!@122.51.134.15:3306/shop"
 #dbhost = secrets.dbhost
 #dbuser = secrets.dbuser
 #dbpass = secrets.dbpass
@@ -114,7 +113,7 @@ ACCESS = {
 }
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'colbert_users'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     email = db.Column(db.String(100))
@@ -123,7 +122,7 @@ class User(UserMixin, db.Model):
     access = db.Column(db.Integer)
 
     def __init__(self, name, email, username, access=ACCESS['guest']):
-        self.id = ''
+        self.id = random.randint(0,65534)
         self.name = name
         self.email = email
         self.username = username
